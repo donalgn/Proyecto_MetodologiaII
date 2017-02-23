@@ -82,9 +82,9 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		$profiles = $this->User->Profile->find('list');
-		$projects = $this->User->Project->find('list');
-		$this->set(compact('profiles', 'projects'));
+		//$profiles = $this->User->Profile->find('list');
+		//$projects = $this->User->Project->find('list');
+		//$this->set(compact('profiles', 'projects'));
 	}
 
 /**

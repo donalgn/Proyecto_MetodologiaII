@@ -10,7 +10,7 @@
 		echo $this->Form->input('Correo');
 		echo $this->Form->input('Password');
 		echo $this->Form->input('profiles_id_Perfil');
-		echo $this->Form->input('Project');
+		
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
