@@ -1,0 +1,25 @@
+<div class="users form">
+<?php echo $this->Form->create('User'); ?>
+	<fieldset>
+		<legend><?php echo __('Add User'); ?></legend>
+	<?php
+	echo $this->Form->input('id_user', array('type' => 'text'));
+              echo $this->Form->input('Nombre');
+		echo $this->Form->input('Apellido_1');
+		echo $this->Form->input('Apellido_2');
+		echo $this->Form->input('Correo');
+		echo $this->Form->input('Password');
+		echo $this->Form->input('profiles_id_Perfil');
+		echo $this->Form->input('Project');
+	?>
+	</fieldset>
+<?php echo $this->Form->end(__('Submit')); ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Actions'); ?></h3>
+	<ul>
+
+		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
+		
+	</ul>
+</div>
