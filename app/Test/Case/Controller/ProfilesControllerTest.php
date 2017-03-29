@@ -12,7 +12,8 @@ class ProfilesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.profile'
+		'app.profile',
+		'app.user'
 	);
 
 /**

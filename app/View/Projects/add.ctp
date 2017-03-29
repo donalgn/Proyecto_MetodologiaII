@@ -1,26 +1,38 @@
-<div class="projects form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+    
 <?php echo $this->Form->create('Project'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Project'); ?></legend>
-	<?php
-		echo $this->Form->input('Nombre_Proyecto');
-		echo $this->Form->input('Horas_Extras');
-		echo $this->Form->input('Activacion');
-		echo $this->Form->input('Fecha_Inicio');
-		echo $this->Form->input('Fecha_Final');
-		echo $this->Form->input('Tiempo_Total');
-		echo $this->Form->input('Tiempo_Trabajado');
-		echo $this->Form->input('User');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+	
+	<?php echo $this->Form->input('project_name', array('class' => 'form-control', 'label' => 'Project Name')); ?>
+	<p>
+        <?php $options = array ('Y'=> 'Y', 'N'=>'N');
+        echo $this->Form->input
+        ('extra_hours', array ('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold')); ?>
+        </p>
+        <p>
+        <?php $options = array ('Y'=> 'Y', 'N'=>'N');
+        echo $this->Form->input
+        ('active', array ('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold')); ?>
+        </p>
+         <p>
+	<?php echo $this->Form->input('start_date'); ?>
+         </p>
+          <p>
+	<?php echo $this->Form->input('finish_date'); ?>
+           </p>
+	<?php echo $this->Form->input('total_time', array('class' => 'form-control', 'label' => 'Total Time')); ?>
+	
 
-		<li><?php echo $this->Html->link(__('List Projects'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New User'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-	</ul>
+	</fieldset>
+     <p>
+        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
+          </p>
 </div>
+        
+        </div>
+
+    </div>
+

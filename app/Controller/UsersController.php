@@ -15,16 +15,43 @@ class UsersController extends AppController {
  */
 	public $components = array('Paginator');
 
+        public function beforeFilter() {
+            parent::beforeFilter();
+          //  $this->Auth->userScope = array('User.enable_user' == 'Y');
+            $this->Auth->allow('login');
+          }
+          
+          public function login(){
+              if($this->request->is('post')){
+                    if($this->Auth->login()){
+                     if ($this->Auth->user('enable_user') == 'Y')
+                      return $this->redirect($this->Auth->redirectUrl('Home'));
+                  }
+                  $this->Session->setFlash('Usuario y/o constraseña son incorrectos','default',array('class' => 'alert alert-danger'));
+                          
+              }
+             
+          }
+
+        public function logout(){
+            return $this->redirect($this->Auth->logout());
+}
+        
 /**
  * index method
  *
  * @return void
  */
 	public function index() {
-		//$this->User->recursive = 0;
+            
+		$this->User->recursive = 0;
 		$this->set('users', $this->Paginator->paginate());
 	}
 
+        
+        public function home() {
+
+	}
 /**
  * view method
  *
@@ -55,9 +82,9 @@ class UsersController extends AppController {
 				$this->Flash->error(__('The user could not be saved. Please, try again.'));
 			}
 		}
-		//$profiles = $this->User->Profile->find('list');
-		//$projects = $this->User->Project->find('list');
-		//$this->set(compact('profiles', 'projects'));
+		$profiles = $this->User->Profile->find('list',array('fields' => array('profile_id', 'perfil'), 
+                    'conditions'=>array('Profile.enable_profile like'=>'%Y%'),));
+		$this->set(compact('profiles'));
 	}
 
 /**
@@ -82,9 +109,8 @@ class UsersController extends AppController {
 			$options = array('conditions' => array('User.' . $this->User->primaryKey => $id));
 			$this->request->data = $this->User->find('first', $options);
 		}
-		//$profiles = $this->User->Profile->find('list');
-		//$projects = $this->User->Project->find('list');
-		//$this->set(compact('profiles', 'projects'));
+		$profiles = $this->User->Profile->find('list',array('fields' => array('profile_id', 'perfil')));
+		$this->set(compact('profiles'));
 	}
 
 /**
@@ -107,4 +133,6 @@ class UsersController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+         
 }

@@ -1,20 +1,30 @@
-<div class="usersProjects form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+    
 <?php echo $this->Form->create('UsersProject'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Users Project'); ?></legend>
-	<?php
-		echo $this->Form->input('users_id_user');
-		echo $this->Form->input('projects_idProyectos');
-		echo $this->Form->input('enable');
-	?>
+	
+                    <?php echo $this->Form->input('user_project_id'); ?>
+                
+                 <p>
+		<?php echo $this->Form->input('project_id', array('class' => 'form-control', 'label' => 'Project'));?>
+                </p>
+                <p>
+		<?php echo $this->Form->input('user_id', array('class' => 'form-control', 'label' => 'Username'));?>
+                </p>
+                <p>
+		<?php
+                $options = array('Y'=>'Y', 'N'=>'N');
+                 echo $this->Form->input
+                  ('enable_user_project', array('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold'));
+		?>
+                </p>
+		
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+<p>
+        <?php echo $this->Form->end(array('label' => 'Edit', 'class' =>'btn btn-success')); ?>
+            </p>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('UsersProject.users_id_user')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('UsersProject.users_id_user')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Users Projects'), array('action' => 'index')); ?></li>
-	</ul>
-</div>

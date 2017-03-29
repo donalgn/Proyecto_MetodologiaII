@@ -55,10 +55,16 @@ class JobsLogsController extends AppController {
 				$this->Flash->error(__('The jobs log could not be saved. Please, try again.'));
 			}
 		}
-		$users = $this->JobsLog->User->find('list');
-		$projects = $this->JobsLog->Project->find('list');
-		$categories = $this->JobsLog->Category->find('list');
-		$this->set(compact('users', 'projects', 'categories'));
+		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria'),
+                    'conditions'=>array('Category.enable_category like'=>'%Y%')));
+                
+		$this->set(compact('categories'));
+               
+                $this->loadModel('UsersProject');
+                $this->set('proyectos', $this->UsersProject->find('list',array('fields'=>array('user_project_id'))));
+               $this->set('usuario', $this->Auth->user('username'));
+               
+               
 	}
 
 /**
@@ -83,10 +89,13 @@ class JobsLogsController extends AppController {
 			$options = array('conditions' => array('JobsLog.' . $this->JobsLog->primaryKey => $id));
 			$this->request->data = $this->JobsLog->find('first', $options);
 		}
-		$users = $this->JobsLog->User->find('list');
-		$projects = $this->JobsLog->Project->find('list');
-		$categories = $this->JobsLog->Category->find('list');
-		$this->set(compact('users', 'projects', 'categories'));
+		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria'),
+                    'conditions'=>array('Category.enable_category like'=>'%Y%')));
+		$this->set(compact('categories'));
+               
+                $this->loadModel('Project');
+                $this->set('proyectos', $this->Project->find('list',array('fields'=>array('project_name'),
+                     'conditions'=>array('Project.active like'=>'%Y%'))));
 	}
 
 /**

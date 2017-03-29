@@ -12,10 +12,7 @@ class ProjectTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.project',
-		'app.user',
-		'app.profiles',
-		'app.users_project'
+		'app.project'
 	);
 
 /**

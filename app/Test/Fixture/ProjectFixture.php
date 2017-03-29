@@ -10,16 +10,16 @@ class ProjectFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'idProyectos' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'Nombre_Proyecto' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Horas_Extras' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Activacion' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Fecha_Inicio' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'Fecha_Final' => array('type' => 'datetime', 'null' => true, 'default' => null),
-		'Tiempo_Total' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
-		'Tiempo_Trabajado' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'project_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'project_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'extra_hours' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'active' => array('type' => 'string', 'null' => false, 'default' => 'Y', 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'start_date' => array('type' => 'datetime', 'null' => false, 'default' => null),
+		'finish_date' => array('type' => 'datetime', 'null' => false, 'default' => null),
+		'total_time' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false),
+		'time_worked' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'idProyectos', 'unique' => 1)
+			'PRIMARY' => array('column' => 'project_id', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -31,14 +31,14 @@ class ProjectFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'idProyectos' => 1,
-			'Nombre_Proyecto' => 'Lorem ipsum dolor sit amet',
-			'Horas_Extras' => 'Lorem ipsum dolor sit ame',
-			'Activacion' => 'Lorem ipsum dolor sit ame',
-			'Fecha_Inicio' => '2017-02-22 21:07:37',
-			'Fecha_Final' => '2017-02-22 21:07:37',
-			'Tiempo_Total' => 1,
-			'Tiempo_Trabajado' => 1
+			'project_id' => 1,
+			'project_name' => 'Lorem ipsum dolor sit amet',
+			'extra_hours' => 'Lorem ipsum dolor sit ame',
+			'active' => 'Lorem ipsum dolor sit ame',
+			'start_date' => '2017-03-20 23:37:35',
+			'finish_date' => '2017-03-20 23:37:35',
+			'total_time' => 1,
+			'time_worked' => 1
 		),
 	);
 

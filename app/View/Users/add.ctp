@@ -1,25 +1,33 @@
-<div class="users form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            
 <?php echo $this->Form->create('User'); ?>
 	<fieldset>
 		<legend><?php echo __('Add User'); ?></legend>
-	<?php
-	echo $this->Form->input('id_user', array('type' => 'text'));
-              echo $this->Form->input('Nombre');
-		echo $this->Form->input('Apellido_1');
-		echo $this->Form->input('Apellido_2');
-		echo $this->Form->input('Correo');
-		echo $this->Form->input('Password');
-		echo $this->Form->input('profiles_id_Perfil');
-		
-	?>
+	
+       
+		<?php echo $this->Form->input('username', array('class' => 'form-control', 'label' => 'Username'));?>
+		<?php echo $this->Form->input('name', array('class' => 'form-control', 'label' => 'Name')); ?>
+		<?php echo $this->Form->input('lastname_1',array('class' => 'form-control', 'label' => 'Last Name 1')); ?>
+		<?php echo $this->Form->input('lastname_2',array('class' => 'form-control', 'label' => 'Last Name 2')); ?>
+		<?php echo $this->Form->input('mail',array('class' => 'form-control', 'label' => 'E-mail')); ?>
+		<?php echo $this->Form->input('password',array('class' => 'form-control', 'label' => 'Password')); ?>
+                <p>
+                <?php $options = array ('Y'=> 'Y', 'N'=>'N');
+                 echo $this->Form->input
+                ('enable_user', array ('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold')); ?>
+		</p>
+                <P>
+                 <?php echo $this->Form->input('profile_id',array('class' => 'form-control', 'label' => 'Profile')); ?>
+                </P>
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+           <p>
+        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
+            </p>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
 
-		<li><?php echo $this->Html->link(__('List Users'), array('action' => 'index')); ?></li>
-		
-	</ul>
 </div>
+
+  </div>
+             

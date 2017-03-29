@@ -1,17 +1,30 @@
-<div class="profiles form">
-<?php echo $this->Form->create('Profile'); ?>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+    
+        <?php echo $this->Form->create('Profile'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Profile'); ?></legend>
-	<?php
-		echo $this->Form->input('Nombre_Perfil');
-	?>
+	
+             
+                <p>
+		<?php echo $this->Form->input('profile_name', array('class' => 'form-control', 'label' => 'Profile Name')); ?>
+                    
+                </p>
+                <?php
+              
+                  $options = array('Y'=>'Y', 'N'=>'N');
+                 echo $this->Form->input
+                  ('enable_profile', array('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold'));
+		?>
+	
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+            <p>
+        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
+            </p>
 
-		<li><?php echo $this->Html->link(__('List Profiles'), array('action' => 'index')); ?></li>
-	</ul>
-</div>
+           
+    
+ </div>
+     </div>
+         </div>

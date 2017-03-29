@@ -10,13 +10,14 @@ class UsersProjectFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'users_id_user' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 20, 'key' => 'primary', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'projects_idProyectos' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'enable' => array('type' => 'integer', 'null' => true, 'default' => null, 'unsigned' => false),
+		'user_project_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'project_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'enable_user_project' => array('type' => 'string', 'null' => true, 'default' => 'Y', 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => array('users_id_user', 'projects_idProyectos'), 'unique' => 1),
-			'fk_users_projects_users1_idx' => array('column' => 'users_id_user', 'unique' => 0),
-			'fk_users_projects_projects1_idx' => array('column' => 'projects_idProyectos', 'unique' => 0)
+			'PRIMARY' => array('column' => array('user_project_id', 'project_id', 'user_id'), 'unique' => 1),
+			'fk_project_has_user_user_idx' => array('column' => 'user_id', 'unique' => 0),
+			'fk_project_has_user_project_idx' => array('column' => 'project_id', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -28,9 +29,10 @@ class UsersProjectFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'users_id_user' => 'Lorem ipsum dolor ',
-			'projects_idProyectos' => 1,
-			'enable' => 1
+			'user_project_id' => 1,
+			'project_id' => 1,
+			'user_id' => 1,
+			'enable_user_project' => 'Lorem ipsum dolor sit ame'
 		),
 	);
 

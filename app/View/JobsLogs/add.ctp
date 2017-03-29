@@ -1,29 +1,31 @@
-<div class="jobsLogs form">
-<?php echo $this->Form->create('JobsLog'); ?>
-	<fieldset>
-		<legend><?php echo __('Add Jobs Log'); ?></legend>
-	<?php
-		echo $this->Form->input('Observacion');
-		echo $this->Form->input('Fecha');
-		echo $this->Form->input('Hora_Inicio');
-		echo $this->Form->input('Hora_Final');
-		echo $this->Form->input('users_id');
-		echo $this->Form->input('projects_id');
-		echo $this->Form->input('categories_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
 
-		<li><?php echo $this->Html->link(__('List Jobs Logs'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Users'), array('controller' => 'users', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Users'), array('controller' => 'users', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Projects'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Categories'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
-	</ul>
+       <?php echo $this->Form->create('JobsLog'); ?>
+                           
+	<fieldset>
+		<legend><?php echo __('Add Jobs Log'); ?></legend>              
+	
+	<?php echo $this->Form->input('users_id', array('class' => 'form-control','type' => 'text','default'=>$usuario,'readonly' => 'readonly'));;?>
+		</p>
+                <p>
+                <?php echo $this->Form->input('projects_id', array ('class' => 'form-control','type' => 'select', 'options' => $proyectos)); ?>
+                </p>
+                <p>
+		<?php echo $this->Form->input('category_id',array('class' => 'form-control', 'label' => 'Category')); ?>
+                </p>
+                <p>
+		<?php echo $this->Form->input('date_work');  ?>
+                </p>
+                <?php echo $this->Form->input('total_hours',array('class' => 'form-control', 'label' => 'Total Hours'));  ?>
+                <p>
+		<?php echo $this->Form->input('observations',array('class' => 'form-control', 'label' => 'Observations'));  ?>
+		</p>
+	
+	</fieldset>
+            <p>
+        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
+            </p>
 </div>
+

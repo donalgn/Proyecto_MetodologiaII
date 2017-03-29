@@ -1,19 +1,30 @@
-<div class="profiles form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+
 <?php echo $this->Form->create('Profile'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Profile'); ?></legend>
-	<?php
-		echo $this->Form->input('id_Perfil');
-		echo $this->Form->input('Nombre_Perfil');
-	?>
+                 
+                    <?php echo $this->Form->input('profile_id');?>
+                <p>
+		<?php echo $this->Form->input('profile_name', array('class' => 'form-control', 'label' => 'Profile Name')); ?>
+                    
+                </p>
+                <?php
+              
+                  $options = array('Y'=>'Y', 'N'=>'N');
+                 echo $this->Form->input
+                  ('enable_profile', array('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold'));
+		?>
+	
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+ <p>
+        <?php echo $this->Form->end(array('label' => 'Edit', 'class' =>'btn btn-success')); ?>
+            </p>
 </div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Profile.id_Perfil')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Profile.id_Perfil')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Profiles'), array('action' => 'index')); ?></li>
-	</ul>
+        
 </div>
+    
+    </div>

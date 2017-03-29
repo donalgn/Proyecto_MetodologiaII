@@ -55,8 +55,6 @@ class ProjectsController extends AppController {
 				$this->Flash->error(__('The project could not be saved. Please, try again.'));
 			}
 		}
-		//$users = $this->Project->User->find('list');
-		//$this->set(compact('users'));
 	}
 
 /**
@@ -81,8 +79,6 @@ class ProjectsController extends AppController {
 			$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
 			$this->request->data = $this->Project->find('first', $options);
 		}
-		$users = $this->Project->User->find('list');
-		$this->set(compact('users'));
 	}
 
 /**

@@ -10,10 +10,11 @@ class CategoryFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'idCategorias' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'Nombre_Categoria' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'category_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'category_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'enable_category' => array('type' => 'string', 'null' => false, 'default' => 'Y', 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'idCategorias', 'unique' => 1)
+			'PRIMARY' => array('column' => 'category_id', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -25,8 +26,9 @@ class CategoryFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'idCategorias' => 1,
-			'Nombre_Categoria' => 'Lorem ipsum dolor sit amet'
+			'category_id' => 1,
+			'category_name' => 'Lorem ipsum dolor sit amet',
+			'enable_category' => 'Lorem ipsum dolor sit ame'
 		),
 	);
 

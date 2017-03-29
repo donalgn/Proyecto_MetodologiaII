@@ -13,16 +13,27 @@ class ProfilesController extends AppController {
  *
  * @var array
  */
-	public $components = array('Paginator');
+	public $components = array('Session', 'RequestHandler');
+	public $helpers = array('Html', 'Form', 'Time', 'Js');
+        
+        
+        public $paginate = array(
+        'limit' => 20
+    );
 
 /**
+ * 
+ * 
  * index method
  *
  * @return void
  */
 	public function index() {
 		$this->Profile->recursive = 0;
-		$this->set('profiles', $this->Paginator->paginate());
+                $this->paginate['Profile']['limit'] = 3;
+		$this->set('profiles', $this->paginate());
+                
+          
 	}
 
 /**

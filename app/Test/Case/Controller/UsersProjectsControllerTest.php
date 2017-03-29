@@ -12,7 +12,10 @@ class UsersProjectsControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.users_project'
+		'app.users_project',
+		'app.project',
+		'app.user',
+		'app.profile'
 	);
 
 /**

@@ -10,10 +10,11 @@ class ProfileFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'id_Perfil' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
-		'Nombre_Perfil' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'profile_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'profile_name' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'enable_profile' => array('type' => 'string', 'null' => true, 'default' => 'Y', 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id_Perfil', 'unique' => 1)
+			'PRIMARY' => array('column' => 'profile_id', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -25,8 +26,9 @@ class ProfileFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id_Perfil' => 1,
-			'Nombre_Perfil' => 'Lorem ipsum dolor sit amet'
+			'profile_id' => 1,
+			'profile_name' => 'Lorem ipsum dolor sit amet',
+			'enable_profile' => 'Lorem ipsum dolor sit ame'
 		),
 	);
 

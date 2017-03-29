@@ -12,7 +12,8 @@ class CategoriesControllerTest extends ControllerTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.category'
+		'app.category',
+		'app.jobs_log'
 	);
 
 /**

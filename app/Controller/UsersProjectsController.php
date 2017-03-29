@@ -55,6 +55,13 @@ class UsersProjectsController extends AppController {
 				$this->Flash->error(__('The users project could not be saved. Please, try again.'));
 			}
 		}
+               
+                
+		$projects = $this->UsersProject->Project->find('list',array('fields' => array('project_id', 'proyecto'),
+                     'conditions'=>array('Project.active like'=>'%Y%')));
+		$users = $this->UsersProject->User->find('list',array('fields' => array('username'),
+                     'conditions'=>array('User.enable_user like'=>'%Y%')));
+		$this->set(compact('projects', 'users'));
 	}
 
 /**
@@ -79,6 +86,11 @@ class UsersProjectsController extends AppController {
 			$options = array('conditions' => array('UsersProject.' . $this->UsersProject->primaryKey => $id));
 			$this->request->data = $this->UsersProject->find('first', $options);
 		}
+		$projects = $this->UsersProject->Project->find('list',array('fields' => array('project_id', 'proyecto'),
+                     'conditions'=>array('Project.active like'=>'%Y%')));
+		$users = $this->UsersProject->User->find('list',array('fields' => array('username'),
+                     'conditions'=>array('User.enable_user like'=>'%Y%')));
+		$this->set(compact('projects', 'users'));
 	}
 
 /**

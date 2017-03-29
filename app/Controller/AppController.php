@@ -31,4 +31,38 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    
+  
+
+    
+    public $components = array (
+        'Flash',
+      'Session',
+        'Auth' => array(
+          'loginRedirect' => array(
+         'controller' => 'users',
+            'action' => 'index'
+            ),
+           'logoutRedirect' => array (
+           'controller' => 'users',
+           'action' => 'login'  
+           ) ,
+           'authenticate' => array(
+              'Form' => array (
+               'scope' => array('enable_user' => 'Y'),
+                'passwordHasher' => 'BlowFish'
+               )
+           ),
+           'authError' => false
+        )
+    );
+
+    public function beforeFilter() {
+   $this->Auth->allow('login','logout');
+   $this->set('current_user', $this->Auth->user());
+  
+   
+ }
+
+    
 }

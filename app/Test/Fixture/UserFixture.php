@@ -10,16 +10,18 @@ class UserFixture extends CakeTestFixture {
  * @var array
  */
 	public $fields = array(
-		'id_user' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 20, 'key' => 'primary', 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Nombre' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Apellido_1' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Apellido_2' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Correo' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'Password' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
-		'profiles_id_Perfil' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
+		'username' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 40, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'name' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'lastname_1' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'lastname_2' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'mail' => array('type' => 'string', 'null' => true, 'default' => null, 'length' => 45, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'password' => array('type' => 'string', 'null' => true, 'default' => null, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'enable_user' => array('type' => 'string', 'null' => false, 'default' => 'Y', 'length' => 1, 'collate' => 'utf8_general_ci', 'charset' => 'utf8'),
+		'profile_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'unsigned' => false, 'key' => 'primary'),
 		'indexes' => array(
-			'PRIMARY' => array('column' => array('id_user', 'profiles_id_Perfil'), 'unique' => 1),
-			'fk_users_profiles1_idx' => array('column' => 'profiles_id_Perfil', 'unique' => 0)
+			'PRIMARY' => array('column' => array('user_id', 'profile_id'), 'unique' => 1),
+			'fk_user_profile_idx' => array('column' => 'profile_id', 'unique' => 0)
 		),
 		'tableParameters' => array('charset' => 'utf8', 'collate' => 'utf8_general_ci', 'engine' => 'InnoDB')
 	);
@@ -31,13 +33,15 @@ class UserFixture extends CakeTestFixture {
  */
 	public $records = array(
 		array(
-			'id_user' => 'Lorem ipsum dolor ',
-			'Nombre' => 'Lorem ipsum dolor sit amet',
-			'Apellido_1' => 'Lorem ipsum dolor sit amet',
-			'Apellido_2' => 'Lorem ipsum dolor sit amet',
-			'Correo' => 'Lorem ipsum dolor sit amet',
-			'Password' => 'Lorem ipsum dolor sit amet',
-			'profiles_id_Perfil' => 1
+			'user_id' => 1,
+			'username' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
+			'lastname_1' => 'Lorem ipsum dolor sit amet',
+			'lastname_2' => 'Lorem ipsum dolor sit amet',
+			'mail' => 'Lorem ipsum dolor sit amet',
+			'password' => 'Lorem ipsum dolor sit amet',
+			'enable_user' => 'Lorem ipsum dolor sit ame',
+			'profile_id' => 1
 		),
 	);
 
