@@ -3,6 +3,7 @@ App::uses('AppModel', 'Model');
 /**
  * JobsLog Model
  *
+ * @property Project $Project
  * @property Category $Category
  */
 class JobsLog extends AppModel {
@@ -21,7 +22,12 @@ class JobsLog extends AppModel {
  */
 	public $primaryKey = 'idBitacora';
 
-public $validate = array(
+/**
+ * Validation rules
+ *
+ * @var array
+ */
+	public $validate = array(
 		'idBitacora' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
@@ -32,15 +38,27 @@ public $validate = array(
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'date' => array(
-			'datetime' => array(
-				'rule' => array('datetime'),
+		'username' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
+		),
+		'project_id' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
+		'category_id' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -78,27 +96,7 @@ public $validate = array(
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
-		'category_id' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'project_id' => array(
-			'notBlank' => array(
-				'rule' => array('notBlank'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'user_id' => array(
+		'total_hours' => array(
 			'notBlank' => array(
 				'rule' => array('notBlank'),
 				//'message' => 'Your custom message here',
@@ -118,20 +116,6 @@ public $validate = array(
  * @var array
  */
 	public $belongsTo = array(
-		'Category' => array(
-			'className' => 'Category',
-			'foreignKey' => 'category_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
-		'UserProject' => array(
-			'className' => 'UsersProject',
-			'foreignKey' => 'user_project_id',
-			'conditions' => '',
-			'fields' => '',
-			'order' => ''
-		),
 		'Project' => array(
 			'className' => 'Project',
 			'foreignKey' => 'project_id',
@@ -139,14 +123,14 @@ public $validate = array(
 			'fields' => '',
 			'order' => ''
 		),
-		'User' => array(
-			'className' => 'User',
-			'foreignKey' => 'user_id',
+		'Category' => array(
+			'className' => 'Category',
+			'foreignKey' => 'category_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''
 		)
+            
+               
 	);
 }
-
-

@@ -6,14 +6,19 @@
 			<?php echo h($alarm['Alarm']['id_alarm']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Enable Alarm'); ?></dt>
+		<dd>
+			<?php echo h($alarm['Alarm']['enable_alarm']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Project'); ?></dt>
 		<dd>
 			<?php echo $this->Html->link($alarm['Project']['project_id'], array('controller' => 'projects', 'action' => 'view', $alarm['Project']['project_id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Enable Alarm'); ?></dt>
+		<dt><?php echo __('Percentage'); ?></dt>
 		<dd>
-			<?php echo h($alarm['Alarm']['enable_alarm']); ?>
+			<?php echo h($alarm['Alarm']['percentage']); ?>
 			&nbsp;
 		</dd>
 	</dl>

@@ -3,6 +3,8 @@ App::uses('AppModel', 'Model');
 /**
  * Project Model
  *
+ * @property User $User
+ * @property User $User
  */
 class Project extends AppModel {
 
@@ -20,12 +22,26 @@ class Project extends AppModel {
  */
 	public $primaryKey = 'project_id';
 
+
+	// The Associations below have been created with all possible keys, those that are not needed can be removed
+
 /**
- * Validation rules
+ * belongsTo associations
  *
  * @var array
+ * 
  */
-         public $virtualFields = array('proyecto' => 'CONCAT(Project.project_name)');
+	public $belongsTo = array(
+		'User' => array(
+			'className' => 'User',
+			'foreignKey' => 'user_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		)
+	);
+        
+           public $virtualFields = array('proyecto' => 'CONCAT(Project.project_name)');
         
 	public $validate = array(
 		'project_id' => array(
@@ -70,7 +86,7 @@ class Project extends AppModel {
 		),
 		'start_date' => array(
 			'datetime' => array(
-				'rule' => array('datetime'),
+				'rule' => array('date'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -88,7 +104,7 @@ class Project extends AppModel {
 		),
 		'finish_date' => array(
 			'datetime' => array(
-				'rule' => array('datetime'),
+				'rule' => array('date'),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
@@ -114,5 +130,26 @@ class Project extends AppModel {
 				//'on' => 'create', // Limit validation to 'create' or 'update' operations
 			),
 		),
+
+        
+            'user_id' => array(
+			'notBlank' => array(
+				'rule' => array('notBlank'),
+				//'message' => 'Your custom message here',
+				//'allowEmpty' => false,
+				//'required' => false,
+				//'last' => false, // Stop validation after this rule
+				//'on' => 'create', // Limit validation to 'create' or 'update' operations
+			),
+		),
 	);
+        
+   
+
+/**
+ * hasAndBelongsToMany associations
+ *
+ * @var array
+ */
+
 }

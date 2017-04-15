@@ -103,12 +103,10 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Labor Register
                   <span class="caret"></span></a>
               <ul class="dropdown-menu" role ="menu">
-                 <li><a <?php echo $this -> Html->link('Labor Register List', array('controller' => 'JobsLogs', 'action' => 'index')) ?></li>
+                <li><a <?php echo $this -> Html->link('Labor Register List', array('controller' => 'JobsLogs', 'action' => 'index')) ?></li>
                  <li><a <?php echo $this -> Html->link('New Labor Register', array('controller' => 'JobsLogs', 'action' => 'add')) ?></li>
               </ul>
-            </li>
-            
-              
+            </li>       
             
             <?php endif; ?>
           

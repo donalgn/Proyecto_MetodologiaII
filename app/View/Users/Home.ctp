@@ -9,9 +9,9 @@
             <p></p>
             <p></p>
 	<fieldset>
-		<legend><?php echo __('Profile'); ?></legend>
+		<legend><?php echo __('Profile User'); ?></legend>
                 
-       <?php echo $this->Html->link(
+             <?php echo $this->Html->link(
 					$this->Html->image('user-icon.png', array( 'border' => '0')),
 					'',
 					array('target' => '_blank', 'escape' => false, 'id' => 'cake-powered')

@@ -3,8 +3,9 @@
 	<fieldset>
 		<legend><?php echo __('Add Alarm'); ?></legend>
 	<?php
-		echo $this->Form->input('project_id');
 		echo $this->Form->input('enable_alarm');
+		echo $this->Form->input('project_id');
+		echo $this->Form->input('percentage');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>

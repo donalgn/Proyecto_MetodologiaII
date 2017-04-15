@@ -16,9 +16,9 @@
 			<?php echo $this->Html->link($usersProject['User']['name'], array('controller' => 'users', 'action' => 'view', $usersProject['User']['user_id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Enable User Project'); ?></dt>
+		<dt><?php echo __('Enable'); ?></dt>
 		<dd>
-			<?php echo h($usersProject['UsersProject']['enable_user_project']); ?>
+			<?php echo h($usersProject['UsersProject']['enable']); ?>
 			&nbsp;
 		</dd>
 	</dl>

@@ -14,7 +14,14 @@ class CategoriesController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
-
+        
+        public $paginate = array(
+           'limit' => 20,
+        'order' => array(
+            'Post.title' => 'asc'
+        )
+    );
+       
 /**
  * index method
  *
@@ -22,6 +29,7 @@ class CategoriesController extends AppController {
  */
 	public function index() {
 		$this->Category->recursive = 0;
+                $this->Paginator->settings = $this->paginate;
 		$this->set('categories', $this->Paginator->paginate());
 	}
 

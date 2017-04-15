@@ -13,6 +13,7 @@ class JobsLogsControllerTest extends ControllerTestCase {
  */
 	public $fixtures = array(
 		'app.jobs_log',
+		'app.project',
 		'app.category'
 	);
 

@@ -6,6 +6,21 @@
 			<?php echo h($jobsLog['JobsLog']['idBitacora']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Username'); ?></dt>
+		<dd>
+			<?php echo h($jobsLog['JobsLog']['username']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Project'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($jobsLog['Project']['project_id'], array('controller' => 'projects', 'action' => 'view', $jobsLog['Project']['project_id'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Category'); ?></dt>
+		<dd>
+			<?php echo $this->Html->link($jobsLog['Category']['category_id'], array('controller' => 'categories', 'action' => 'view', $jobsLog['Category']['category_id'])); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Date'); ?></dt>
 		<dd>
 			<?php echo h($jobsLog['JobsLog']['date']); ?>
@@ -26,26 +41,6 @@
 			<?php echo h($jobsLog['JobsLog']['total_hours']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Category'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($jobsLog['Category']['category_id'], array('controller' => 'categories', 'action' => 'view', $jobsLog['Category']['category_id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Project Id'); ?></dt>
-		<dd>
-			<?php echo h($jobsLog['JobsLog']['user_project_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Project Id'); ?></dt>
-		<dd>
-			<?php echo h($jobsLog['JobsLog']['project_id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User Id'); ?></dt>
-		<dd>
-			<?php echo h($jobsLog['JobsLog']['user_id']); ?>
-			&nbsp;
-		</dd>
 	</dl>
 </div>
 <div class="actions">
@@ -55,6 +50,8 @@
 		<li><?php echo $this->Form->postLink(__('Delete Jobs Log'), array('action' => 'delete', $jobsLog['JobsLog']['idBitacora']), array('confirm' => __('Are you sure you want to delete # %s?', $jobsLog['JobsLog']['idBitacora']))); ?> </li>
 		<li><?php echo $this->Html->link(__('List Jobs Logs'), array('action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Jobs Log'), array('action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Categories'), array('controller' => 'categories', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Category'), array('controller' => 'categories', 'action' => 'add')); ?> </li>
 	</ul>

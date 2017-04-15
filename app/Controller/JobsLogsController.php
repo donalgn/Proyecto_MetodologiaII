@@ -14,14 +14,29 @@ class JobsLogsController extends AppController {
  * @var array
  */
 	public $components = array('Paginator');
+        
+      
+        
+        public $paginate = array(
+         
+           'limit' => 20,
+                'order' => array(
+            'Post.title' => 'asc'
+        )
+    );
 
 /**
  * index method
  *
  * @return void
+ * 
+ * 
  */
 	public function index() {
-		$this->JobsLog->recursive = 0;
+                $this->JobsLog->query("call proyectos");
+                 $this->JobsLog->query("call Porcentaje");
+                $this->JobsLog->recursive = 0;
+                $this->Paginator->settings = $this->paginate;
 		$this->set('jobsLogs', $this->Paginator->paginate());
 	}
 
@@ -46,6 +61,7 @@ class JobsLogsController extends AppController {
  * @return void
  */
 	public function add() {
+           $usuario_id =  $this->Auth->user('user_id');
 		if ($this->request->is('post')) {
 			$this->JobsLog->create();
 			if ($this->JobsLog->save($this->request->data)) {
@@ -55,15 +71,34 @@ class JobsLogsController extends AppController {
 				$this->Flash->error(__('The jobs log could not be saved. Please, try again.'));
 			}
 		}
-		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria'),
-                    'conditions'=>array('Category.enable_category like'=>'%Y%')));
                 
-		$this->set(compact('categories'));
-               
-                $this->loadModel('UsersProject');
-                $this->set('proyectos', $this->UsersProject->find('list',array('fields'=>array('user_project_id'))));
-               $this->set('usuario', $this->Auth->user('username'));
-               
+                  $this->set('usuario_id', $this->Auth->user('user_id'));
+		$projects = $this->JobsLog->Project->find('list', array(
+                'recursive' => -1,
+                'fields' => array('project_name'),
+                'joins' => array(
+                     array(
+                         'table' => 'Users_Projects',
+                         'alias' => 'p',
+                         'type' => 'INNER',
+                         'foreignKey' => 'projects_id',
+                         'conditions'=> array(
+                         'Project.project_id = p.project_id',
+                     
+                        )
+                         
+            )
+        ),
+        'conditions'=>array( 'p.user_id'=>$usuario_id
+        
+                    
+        )));
+               // $projects = Hash::extract($proyecto, 'Project.{n}.project_name');
+              
+		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria')));
+		$this->set(compact('projects', 'categories'));
+                $this->set('usuario', $this->Auth->user('username'));
+             
                
 	}
 
@@ -89,13 +124,9 @@ class JobsLogsController extends AppController {
 			$options = array('conditions' => array('JobsLog.' . $this->JobsLog->primaryKey => $id));
 			$this->request->data = $this->JobsLog->find('first', $options);
 		}
-		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria'),
-                    'conditions'=>array('Category.enable_category like'=>'%Y%')));
-		$this->set(compact('categories'));
-               
-                $this->loadModel('Project');
-                $this->set('proyectos', $this->Project->find('list',array('fields'=>array('project_name'),
-                     'conditions'=>array('Project.active like'=>'%Y%'))));
+		$projects = $this->JobsLog->Project->find('list');
+		$categories = $this->JobsLog->Category->find('list');
+		$this->set(compact('projects', 'categories'));
 	}
 
 /**
@@ -106,6 +137,7 @@ class JobsLogsController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+                 $this->JobsLog->query("call borrar($id)");
 		$this->JobsLog->id = $id;
 		if (!$this->JobsLog->exists()) {
 			throw new NotFoundException(__('Invalid jobs log'));
@@ -118,4 +150,6 @@ class JobsLogsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+       
 }

@@ -41,6 +41,21 @@
 			<?php echo h($project['Project']['time_worked']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Percentaje'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['percentaje']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('User Id'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['user_id']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Profile Id'); ?></dt>
+		<dd>
+			<?php echo h($project['Project']['profile_id']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

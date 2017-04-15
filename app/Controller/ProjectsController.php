@@ -55,6 +55,10 @@ class ProjectsController extends AppController {
 				$this->Flash->error(__('The project could not be saved. Please, try again.'));
 			}
 		}
+                
+                $users = $this->Project->User->find('list',array('fields' => array('username'),
+                     'conditions'=> array('User.enable_user LIKE'=>'%Y%','User.profile_id'=>'2')));
+                $this->set(compact('users'));
 	}
 
 /**

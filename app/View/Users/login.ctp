@@ -14,10 +14,10 @@
         <div id="navbar" class="navbar-collapse collapse">
           <?php echo $this->Form->create('User', array('class' => 'navbar-form navbar-right')); ?>
             <div class="form-group">
-              <?php echo $this->Form->input('username', array('label' => false, 'class' => 'form-control', 'placeholder' => 'Usuario')); ?>
+              <?php echo $this->Form->input('username', array('label' => false, 'class' => 'form-control', 'placeholder' => 'Username')); ?>
             </div>
             <div class="form-group">
-              <?php echo $this->Form->input('password', array('label' => false, 'class' => 'form-control', 'placeholder' => 'Contraseña')); ?>
+              <?php echo $this->Form->input('password', array('label' => false, 'class' => 'form-control', 'placeholder' => 'Password')); ?>
             </div>
             <?php echo $this->Form->button('Login', array('class' => 'btn btn-success')); ?>
             <?php echo $this->Form->end(); ?>

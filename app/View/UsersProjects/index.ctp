@@ -1,5 +1,5 @@
 <?php
-   $this->Paginator->options(array(
+$this->Paginator->options(array(
       'update' => '#contenedor-usersprojects',
 
    ));
@@ -20,9 +20,9 @@
 	<thead>
 	<tr>
 			
-			<th><?php echo $this->Paginator->sort('project_id', 'Projects'); ?></th>
-			<th><?php echo $this->Paginator->sort('user_id', 'Users'); ?></th>
-			<th><?php echo $this->Paginator->sort('enable_user_project', 'Enable'); ?></th>
+			<th><?php echo $this->Paginator->sort('project_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('user_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('enable'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -36,13 +36,12 @@
 		<td>
 			<?php echo $this->Html->link($usersProject['User']['name'], array('controller' => 'users', 'action' => 'view', $usersProject['User']['user_id'])); ?>
 		</td>
-		<td><?php echo h($usersProject['UsersProject']['enable_user_project']); ?>&nbsp;</td>
+		<td><?php echo h($usersProject['UsersProject']['enable']); ?>&nbsp;</td>
 		<td class="actions">
 			
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $usersProject['UsersProject']['user_project_id']), 
                          array('class' => 'btn btn-sm btn-default')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $usersProject['UsersProject']['user_project_id']),
-                      array('class' => 'btn btn-sm btn-default'), array('confirm' => __('Are you sure you want to delete # %s?', $usersProject['UsersProject']['user_project_id']))); ?>
+			
 		</td>
 	</tr>
 <?php endforeach; ?>

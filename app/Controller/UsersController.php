@@ -15,6 +15,13 @@ class UsersController extends AppController {
  */
 	public $components = array('Paginator');
 
+      public $paginate = array(
+           'limit' => 20,
+        'order' => array(
+            'Post.title' => 'asc'
+        )
+    );
+        
         public function beforeFilter() {
             parent::beforeFilter();
           //  $this->Auth->userScope = array('User.enable_user' == 'Y');
@@ -45,6 +52,7 @@ class UsersController extends AppController {
 	public function index() {
             
 		$this->User->recursive = 0;
+                 $this->Paginator->settings = $this->paginate;
 		$this->set('users', $this->Paginator->paginate());
 	}
 

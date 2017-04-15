@@ -15,6 +15,12 @@ class UsersProjectsController extends AppController {
  */
 	public $components = array('Paginator');
 
+           public $paginate = array(
+           'limit' => 20,
+        'order' => array(
+            'Post.title' => 'asc'
+        )
+    );
 /**
  * index method
  *
@@ -22,6 +28,7 @@ class UsersProjectsController extends AppController {
  */
 	public function index() {
 		$this->UsersProject->recursive = 0;
+                  $this->Paginator->settings = $this->paginate;
 		$this->set('usersProjects', $this->Paginator->paginate());
 	}
 
@@ -55,8 +62,6 @@ class UsersProjectsController extends AppController {
 				$this->Flash->error(__('The users project could not be saved. Please, try again.'));
 			}
 		}
-               
-                
 		$projects = $this->UsersProject->Project->find('list',array('fields' => array('project_id', 'proyecto'),
                      'conditions'=>array('Project.active like'=>'%Y%')));
 		$users = $this->UsersProject->User->find('list',array('fields' => array('username'),
@@ -86,10 +91,8 @@ class UsersProjectsController extends AppController {
 			$options = array('conditions' => array('UsersProject.' . $this->UsersProject->primaryKey => $id));
 			$this->request->data = $this->UsersProject->find('first', $options);
 		}
-		$projects = $this->UsersProject->Project->find('list',array('fields' => array('project_id', 'proyecto'),
-                     'conditions'=>array('Project.active like'=>'%Y%')));
-		$users = $this->UsersProject->User->find('list',array('fields' => array('username'),
-                     'conditions'=>array('User.enable_user like'=>'%Y%')));
+		$projects = $this->UsersProject->Project->find('list');
+		$users = $this->UsersProject->User->find('list');
 		$this->set(compact('projects', 'users'));
 	}
 

@@ -13,6 +13,7 @@ class JobsLogTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.jobs_log',
+		'app.project',
 		'app.category'
 	);
 

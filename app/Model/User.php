@@ -142,6 +142,8 @@ class User extends AppModel {
 		)
 	);
         
+
+        
         public function beforeSave($options = array())
 	{
 		if(isset($this->data[$this->alias]['password']))

@@ -4,8 +4,9 @@
 	<thead>
 	<tr>
 			<th><?php echo $this->Paginator->sort('id_alarm'); ?></th>
-			<th><?php echo $this->Paginator->sort('project_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('enable_alarm'); ?></th>
+			<th><?php echo $this->Paginator->sort('project_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('percentage'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	</thead>
@@ -13,10 +14,11 @@
 	<?php foreach ($alarms as $alarm): ?>
 	<tr>
 		<td><?php echo h($alarm['Alarm']['id_alarm']); ?>&nbsp;</td>
+		<td><?php echo h($alarm['Alarm']['enable_alarm']); ?>&nbsp;</td>
 		<td>
 			<?php echo $this->Html->link($alarm['Project']['project_id'], array('controller' => 'projects', 'action' => 'view', $alarm['Project']['project_id'])); ?>
 		</td>
-		<td><?php echo h($alarm['Alarm']['enable_alarm']); ?>&nbsp;</td>
+		<td><?php echo h($alarm['Alarm']['percentage']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $alarm['Alarm']['id_alarm'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $alarm['Alarm']['id_alarm'])); ?>

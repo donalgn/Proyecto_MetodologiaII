@@ -11,9 +11,11 @@
               
                   $options = array('Y'=>'Y', 'N'=>'N');
                  echo $this->Form->input
-                  ('enable_category',array('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold'));
-		?>
-	
+                  ('enable_category',array ('class' => 'form-control',
+            'type' => 'select', 'options' => $options, 
+            'empty' => 'Select Yes/No' , // <-- Shows as the first item and has no value
+              )); ?>
+                 
 	</fieldset>
   <p>
         <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>

@@ -16,10 +16,16 @@
                 <p>
                 <?php $options = array ('Y'=> 'Y', 'N'=>'N');
                  echo $this->Form->input
-                ('enable_user', array ('class' => 'form-control','type' => 'select', 'options' => $options, 'selected' => 'Put On Hold')); ?>
+                ('enable_user',array ('class' => 'form-control',
+            'type' => 'select', 'options' => $options, 
+            'empty' => 'Select Yes/No' , // <-- Shows as the first item and has no value
+              )); ?>
 		</p>
                 <P>
-                 <?php echo $this->Form->input('profile_id',array('class' => 'form-control', 'label' => 'Profile')); ?>
+                 <?php echo $this->Form->input('profile_id',array(
+                'type' => 'select',
+                'empty' => 'Select Profile', // <-- Shows as the first item and has no value
+                'class' => 'form-control', 'label' => 'Profile'));?>        
                 </P>
 	</fieldset>
            <p>
