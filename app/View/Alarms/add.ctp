@@ -1,21 +1,43 @@
-<div class="alarms form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
 <?php echo $this->Form->create('Alarm'); ?>
 	<fieldset>
 		<legend><?php echo __('Add Alarm'); ?></legend>
-	<?php
-		echo $this->Form->input('enable_alarm');
-		echo $this->Form->input('project_id');
-		echo $this->Form->input('percentage');
-	?>
+                <p>
+               <?php echo $this->Form->input('project_id',array(
+                'type' => 'select',
+                'empty' => 'Select Project', // <-- Shows as the first item and has no value
+                'class' => 'form-control', 'label' => 'Projects')); ?>
+                </p>
+                <p>
+		<?php  echo $this->Form->input('percentage',array('class' => 'form-control', 'label' => 'Percentage (%)'));  ?>
+                </p>
+                <p>
+                <?php  $options = array('Y'=>'Y', 'N'=>'N');
+                 echo $this->Form->input
+                  ('enable_alarm',array ('class' => 'form-control',
+            'type' => 'select', 'options' => $options, 
+            'empty' => 'Select Yes/No' , // <-- Shows as the first item and has no value
+              )); ?>
+		</p>
+		
+	
 	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
+            
+ <div class="form-group">
+   <label class="col-xs-0 control-label"></label>
+    <?php echo $this->Form->button('Add', ['class' =>'btn btn-success']); ?>
+ <?php echo $this->Form->button('Cancel', array(
+   'type' => 'button',
+   'class' => 'btn btn-danger',
+   'onclick' => 'location.href=\'/Registro_Laboral/alarms\'' 
+)); ?>
+    <?php $this->Form->end() ?>
+       
 </div>
 <div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
-
-		<li><?php echo $this->Html->link(__('List Alarms'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-	</ul>
+	
 </div>
+        </div>
+    </div>

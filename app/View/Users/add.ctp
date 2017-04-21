@@ -28,9 +28,21 @@
                 'class' => 'form-control', 'label' => 'Profile'));?>        
                 </P>
 	</fieldset>
-           <p>
-        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
-            </p>
+          
+             <p>
+            
+         <div class="form-group">
+   <label class="col-xs-0 control-label"></label>
+    <?php echo $this->Form->button('Add', ['class' =>'btn btn-success']); ?>
+ <?php echo $this->Form->button('Cancel', array(
+   'type' => 'button',
+   'class' => 'btn btn-danger',
+   'onclick' => 'location.href=\'/Registro_Laboral/users\'' 
+)); ?>
+    <?php $this->Form->end() ?>
+
+   </p>
+            
 </div>
 
 </div>

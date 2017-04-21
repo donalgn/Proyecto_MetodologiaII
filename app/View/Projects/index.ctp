@@ -18,7 +18,6 @@
 	<tr>
 			
 			<th><?php echo $this->Paginator->sort('project_name'); ?></th>
-			<th><?php echo $this->Paginator->sort('extra_hours'); ?></th>
 			<th><?php echo $this->Paginator->sort('active'); ?></th>
 			<th><?php echo $this->Paginator->sort('start_date'); ?></th>
 			<th><?php echo $this->Paginator->sort('finish_date'); ?></th>
@@ -34,13 +33,12 @@
 	<tr>
 		
 		<td><?php echo h($project['Project']['project_name']); ?>&nbsp;</td>
-		<td><?php echo h($project['Project']['extra_hours']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['active']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['start_date']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['finish_date']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['total_time']); ?>&nbsp;</td>
 		<td><?php echo h($project['Project']['time_worked']); ?>&nbsp;</td>
-		<td><?php echo h($project['Project']['percentaje']); ?>&nbsp;</td>
+		<td><?php echo h($project['Project']['percentaje']),'%'; ?>&nbsp;</td>
 
                 
                 <td>

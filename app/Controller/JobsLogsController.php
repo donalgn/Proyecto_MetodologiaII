@@ -8,19 +8,15 @@ App::uses('AppController', 'Controller');
  */
 class JobsLogsController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
+
+    
 	public $components = array('Paginator');
         
-      
+     
         
-        public $paginate = array(
-         
-           'limit' => 20,
-                'order' => array(
+       public $paginate = array(
+                        'limit' => 20,
+               'order' => array(
             'Post.title' => 'asc'
         )
     );
@@ -35,9 +31,13 @@ class JobsLogsController extends AppController {
 	public function index() {
                 $this->JobsLog->query("call proyectos");
                  $this->JobsLog->query("call Porcentaje");
+                  $this->JobsLog->query("call Review");
+                 $this->mail();
                 $this->JobsLog->recursive = 0;
-                $this->Paginator->settings = $this->paginate;
-		$this->set('jobsLogs', $this->Paginator->paginate());
+                
+                          
+        $this->Paginator->settings = $this->paginate;
+	$this->set('jobsLogs', $this->Paginator->paginate(array('username' => $this->Auth->user('username'))));
 	}
 
 /**
@@ -94,10 +94,13 @@ class JobsLogsController extends AppController {
                     
         )));
                // $projects = Hash::extract($proyecto, 'Project.{n}.project_name');
-              
+                
+                             
 		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria')));
 		$this->set(compact('projects', 'categories'));
                 $this->set('usuario', $this->Auth->user('username'));
+                
+                
              
                
 	}
@@ -150,6 +153,67 @@ class JobsLogsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+     
+        public function mail(){
+            $this->loadModel('Alarm');
+                       
+         $p = $this->JobsLog->Project->find('all', array(
+                 'joins' => array(
+                     array(
+                         'table' => 'alarms',
+                         'alias' => 'a',
+                         'type' => 'INNER',
+                         'foreignKey' => 'projects_id',
+                         'conditions'=> array(
+                         'Project.project_id = a.project_id','a.review = 1','a.send = 0'                        
+                           )
+                         
+            )
+        ),
+        'conditions'=>array( 'project.percentaje = a.percentage'
         
-       
+                    
+        ))); 
+         
+        $this->set('prueba', $p);
+        
+         $this->loadModel('User');
+           
+           // $correo = $this->User->find('list',array('fields' => array('mail'),
+       //  'conditions'=> array('User.user_id'=>$alarma)));
+
+         $string = '';
+         $string1 = '';
+        foreach ($p as $value) {
+          $string = $value ['User']['mail'];
+          $string1 = $value ['Project']['project_name'];    
+               
+        $Email = new CakeEmail('gmail');
+        App::uses('CakeEmail','Netwrok/Email');
+        
+         $Email ->bcc($string);
+         $Email->from('laborregister@gmail.com');
+          $Email->send('Su alarma configurada para el proyecto:'.' '.$string1.' '.'ha alcanzado el porcentaje programado.');
+           
+         
+                
+        }
+            $this->JobsLog->query("call send");
+  }
+            
+            
+           
+           
+            
+              
+          
+            
+   
+        
+
+            
+            
+           
+        
+        
 }

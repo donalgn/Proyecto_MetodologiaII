@@ -64,6 +64,15 @@
               </ul>
             </li>
             
+                <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Alarms
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu" role ="menu">
+                 <li><a <?php echo $this -> Html->link('Alarm List', array('controller' => 'alarms', 'action' => 'index')) ?></li>
+                 <li><a <?php echo $this -> Html->link('New Alarm', array('controller' => 'alarms', 'action' => 'add')) ?></li>
+              </ul>
+            </li>
+            
            
             
              <?php elseif($current_user['profile_id'] == '2'): ?>
@@ -96,6 +105,14 @@
               </ul>
             </li>
             
+                <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Alarms
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu" role ="menu">
+                 <li><a <?php echo $this -> Html->link('Alarm List', array('controller' => 'alarms', 'action' => 'index')) ?></li>
+                 <li><a <?php echo $this -> Html->link('New Alarm', array('controller' => 'alarms', 'action' => 'add')) ?></li>
+              </ul>
+            </li>
                
             <?php else: ?>
             

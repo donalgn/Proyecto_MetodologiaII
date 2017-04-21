@@ -5,7 +5,6 @@
 	<?php
 		echo $this->Form->input('project_id');
 		echo $this->Form->input('project_name');
-		echo $this->Form->input('extra_hours');
 		echo $this->Form->input('active');
 		echo $this->Form->input('start_date');
 		echo $this->Form->input('finish_date');

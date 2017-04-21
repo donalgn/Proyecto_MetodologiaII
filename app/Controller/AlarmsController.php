@@ -55,7 +55,7 @@ class AlarmsController extends AppController {
 				$this->Flash->error(__('The alarm could not be saved. Please, try again.'));
 			}
 		}
-		$projects = $this->Alarm->Project->find('list');
+		$projects = $this->Alarm->Project->find('list',array('fields' => array('project_id', 'proyecto')));
 		$this->set(compact('projects'));
 	}
 
@@ -81,7 +81,7 @@ class AlarmsController extends AppController {
 			$options = array('conditions' => array('Alarm.' . $this->Alarm->primaryKey => $id));
 			$this->request->data = $this->Alarm->find('first', $options);
 		}
-		$projects = $this->Alarm->Project->find('list');
+		$projects = $this->Alarm->Project->find('list',array('fields' => array('project_id', 'proyecto')));
 		$this->set(compact('projects'));
 	}
 
@@ -105,4 +105,6 @@ class AlarmsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+        
+        
 }

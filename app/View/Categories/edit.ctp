@@ -19,9 +19,18 @@
 		?>
 	
 	</fieldset>
-  <p>
-        <?php echo $this->Form->end(array('label' => 'Edit', 'class' =>'btn btn-success')); ?>
-            </p>
+           <p>
+ <div class="form-group">
+   <label class="col-xs-0 control-label"></label>
+    <?php echo $this->Form->button('Edit', ['class' =>'btn btn-success']); ?>
+ <?php echo $this->Form->button('Cancel', array(
+   'type' => 'button',
+   'class' => 'btn btn-danger',
+   'onclick' => 'location.href=\'/Registro_Laboral/categories\'' 
+)); ?>
+    <?php $this->Form->end() ?>
+   
+   </p>
 	</fieldset>
 
 </div>

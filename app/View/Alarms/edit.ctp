@@ -1,23 +1,38 @@
-<div class="alarms form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+<div class="users form">
 <?php echo $this->Form->create('Alarm'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Alarm'); ?></legend>
-	<?php
-		echo $this->Form->input('id_alarm');
-		echo $this->Form->input('enable_alarm');
-		echo $this->Form->input('project_id');
-		echo $this->Form->input('percentage');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+	
+		<?php echo $this->Form->input('id_alarm'); ?>
+                <p>
+		 <?php echo $this->Form->input('project_id',array(
+                'type' => 'select',
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Alarm.id_alarm')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Alarm.id_alarm')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Alarms'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('controller' => 'projects', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('New Project'), array('controller' => 'projects', 'action' => 'add')); ?> </li>
-	</ul>
+                'class' => 'form-control', 'label' => 'Projects')); ?>
+                 <p>
+		<?php  echo $this->Form->input('percentage',array('class' => 'form-control', 'label' => 'Percentage (%)'));  ?>
+                </p>
+                <p>
+                <?php  $options = array('Y'=>'Y', 'N'=>'N');
+                 echo $this->Form->input
+                  ('enable_alarm',array ('class' => 'form-control',
+            'type' => 'select', 'options' => $options, 
+                      
+              )); ?>
+		</p>
+	</fieldset>
+<p>
+        <?php echo $this->Form->end(array('label' => 'Edit', 'class' =>'btn btn-success')); ?>
+            </p>
+	</fieldset>
+
 </div>
+
+</div>
+        
+</div>
+    

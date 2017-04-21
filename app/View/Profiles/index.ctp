@@ -35,10 +35,14 @@
 			
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $profile['Profile']['profile_id']),
                          array('class' => 'btn btn-sm btn-default')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $profile['Profile']['profile_id']), 
-                                array('class' => 'btn btn-sm btn-default'),__('Are you sure you want to delete # %s?', $profile['Profile']['profile_id'])); ?>
-		
-                
+                    
+                    <?php echo $this->Form->postLink('Delete', array( 'action' => 'delete',  $profile['Profile']['profile_id'] ),
+   
+         array('class' => 'btn btn-sm btn-default',
+        'confirm' => __('Are you sure you want to delete')
+    )
+);?>
+                    
                 </td>
 	</tr>
 <?php endforeach; ?>

@@ -28,8 +28,8 @@ $cakeDescription = __d('cake_dev', 'Labor Register System');
 	<?php
 		
 
-                echo $this->Html->css(array('style.css' ,'bootstrap.min', 'bootstrap-theme.min'));
-		echo $this->Html->script(array('jquery.min','docs.min','bootstrap.min'));
+                echo $this->Html->css(array('style.css' ,'bootstrap.min', 'bootstrap-theme.min','jquery-ui'));
+		echo $this->Html->script(array('jquery.min','docs.min','bootstrap.min','jquery','jquery-ui'));
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');

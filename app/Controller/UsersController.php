@@ -25,7 +25,7 @@ class UsersController extends AppController {
         public function beforeFilter() {
             parent::beforeFilter();
           //  $this->Auth->userScope = array('User.enable_user' == 'Y');
-            $this->Auth->allow('login');
+            $this->Auth->allow('login','mail');
           }
           
           public function login(){

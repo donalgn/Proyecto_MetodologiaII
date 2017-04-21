@@ -25,7 +25,29 @@
                     ));?>
                 </p>
                 <p>
-		<?php echo $this->Form->input('date_work');  ?>
+                    
+                 
+                  <script>
+                $(function() {
+                 $("#datepicker").datepicker({
+                      dateFormat: 'yy-mm-dd'
+                     
+                 }
+                         );
+          
+                          
+                         
+                });
+                </script>
+		<?php 
+               echo $this->Form->input('date_work', 
+                array(
+                'class' => 'form-control',
+                'id'=>'datepicker',
+                 'type'=>'text','value' =>"", 'readonly' => "readonly",
+                 'format' => 'yyyy-mm-dd'   
+        ));
+             ?>
                 </p>
                   <p>
 		<?php echo $this->Form->input('observations',array('class' => 'form-control', 'label' => 'Observations'));  ?>
@@ -39,7 +61,18 @@
            
 	</fieldset>
  <p>
-        <?php echo $this->Form->end(array('label' => 'Add', 'class' =>'btn btn-success')); ?>
+       
        
             </p>
+            
+            <div class="form-group">
+   <label class="col-xs-0 control-label"></label>
+    <?php echo $this->Form->button('Add', ['class' =>'btn btn-success']); ?>
+ <?php echo $this->Form->button('Cancel', array(
+   'type' => 'button',
+   'class' => 'btn btn-danger',
+   'onclick' => 'location.href=\'/Registro_Laboral/JobsLogs\'' 
+)); ?>
+    <?php $this->Form->end() ?>
+</div>  
 </div>

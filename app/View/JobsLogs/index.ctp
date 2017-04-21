@@ -8,6 +8,7 @@ $this->Paginator->options(array(
 <div id="contenedor-profiles"> 
 
     <div class="page-header">
+
         
 	<h2><?php echo __('Labor Register'); ?></h2>
         
@@ -15,10 +16,15 @@ $this->Paginator->options(array(
         
 	  <div class="col-md-12">
 
+   
+   
+              
         
 	<table class="table table-striped">
 	<thead>
 	<tr>
+            
+            
             <th><?php echo $this->Paginator->sort('date'); ?></th>
 			
 			<th><?php echo $this->Paginator->sort('username'); ?></th>

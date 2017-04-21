@@ -36,8 +36,15 @@
 	
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $category['Category']['category_id']),
                                  array('class' => 'btn btn-sm btn-default')); ?>
-			<?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $category['Category']['category_id'])
-                                , array('class' => 'btn btn-sm btn-default'), array('confirm' => __('Are you sure you want to delete # %s?', $category['Category']['category_id']))); ?>
+                    
+                    <?php echo $this->Form->postLink('Delete', array( 'action' => 'delete',$category['Category']['category_id'] ),
+   
+         array('class' => 'btn btn-sm btn-default',
+        'confirm' => __('Are you sure you want to delete')
+    )
+);?>
+                    
+			
 		</td>
 	</tr>
 <?php endforeach; ?>
