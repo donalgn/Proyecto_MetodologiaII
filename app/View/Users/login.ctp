@@ -25,9 +25,17 @@
       </div>
     </nav>
 
+<div>
+<p>
+    <img src="../../../../img/LRS.jpg" width="161" height="151" alt="LRS"/>
+
+
+</p>
+</div>    
 
  <div class="jumbotron">
-        <h1>Welcome</h1>
+   
+        <h1>Welcome to LRS</h1>
         <p>Labor Registration System, for the control of our daily projects </p>
       </div>
     
