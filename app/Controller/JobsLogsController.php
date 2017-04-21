@@ -113,6 +113,7 @@ class JobsLogsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+             $usuario_id =  $this->Auth->user('user_id');
 		if (!$this->JobsLog->exists($id)) {
 			throw new NotFoundException(__('Invalid jobs log'));
 		}
@@ -127,9 +128,35 @@ class JobsLogsController extends AppController {
 			$options = array('conditions' => array('JobsLog.' . $this->JobsLog->primaryKey => $id));
 			$this->request->data = $this->JobsLog->find('first', $options);
 		}
-		$projects = $this->JobsLog->Project->find('list');
-		$categories = $this->JobsLog->Category->find('list');
+		 $this->set('usuario_id', $this->Auth->user('user_id'));
+		$projects = $this->JobsLog->Project->find('list', array(
+                'recursive' => -1,
+                'fields' => array('project_name'),
+                'joins' => array(
+                     array(
+                         'table' => 'Users_Projects',
+                         'alias' => 'p',
+                         'type' => 'INNER',
+                         'foreignKey' => 'projects_id',
+                         'conditions'=> array(
+                         'Project.project_id = p.project_id',
+                     
+                        )
+                         
+            )
+        ),
+        'conditions'=>array( 'p.user_id'=>$usuario_id
+        
+                    
+        )));
+               // $projects = Hash::extract($proyecto, 'Project.{n}.project_name');
+                
+                             
+		$categories = $this->JobsLog->Category->find('list',array('fields' => array('category_id', 'categoria')));
 		$this->set(compact('projects', 'categories'));
+                $this->set('usuario', $this->Auth->user('username'));
+                
+                
 	}
 
 /**

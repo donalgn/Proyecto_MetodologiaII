@@ -1,27 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
 <div class="projects form">
 <?php echo $this->Form->create('Project'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Project'); ?></legend>
-	<?php
-		echo $this->Form->input('project_id');
-		echo $this->Form->input('project_name');
-		echo $this->Form->input('active');
-		echo $this->Form->input('start_date');
-		echo $this->Form->input('finish_date');
-		echo $this->Form->input('total_time');
-		echo $this->Form->input('time_worked');
-		echo $this->Form->input('percentaje');
-		echo $this->Form->input('user_id');
-		echo $this->Form->input('profile_id');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+                
+	<?php echo $this->Form->input('project_id');?>
+                <?php echo $this->Form->input('project_name', array('class' => 'form-control', 'label' => 'Project Name')); ?>
+	
+        <p>
+        <?php $options = array ('Y'=> 'Y', 'N'=>'N');
+        echo $this->Form->input ('active', array ('class' => 'form-control',
+            'type' => 'select', 'options' => $options, 
+            'empty' => 'Select Yes/No' , // <-- Shows as the first item and has no value
+              )); ?>
+        </p>
+        
+           
+            <script>
+                $(function() {
+                 $("#datepicker").datepicker({
+                      dateFormat: 'yy-mm-dd'
+                     
+                 }
+                         );
+          
+                          
+                         
+                });
+                </script>    
+	<?php 
+               echo $this->Form->input('start_date', 
+                array(
+                'class' => 'form-control',
+                'id'=>'datepicker',
+                 'type'=>'text','value' =>"", 'readonly' => "readonly",
+                 'format' => 'yyyy-mm-dd'   
+        ));
+             ?>
+           <p>
+              
+            <script>
+                $(function() {
+                 $("#datepicker1").datepicker({
+                      dateFormat: 'yy-mm-dd'
+                     
+                 }
+                         );
+          
+                          
+                         
+                });
+                </script>    
+	<?php 
+               echo $this->Form->input('finish_date', 
+                array(
+                'class' => 'form-control',
+                'id'=>'datepicker1',
+                 'type'=>'text','value' =>"", 'readonly' => "readonly",
+                 'format' => 'yyyy-mm-dd'   
+        ));
+             ?>
+           </p>
+	<?php echo $this->Form->input('total_time', array('class' => 'form-control', 'label' => 'Total Time')); ?>
+         <p>           
+       <?php echo $this->Form->input('user_id',array(
+                'type' => 'select',
+                'empty' => 'Select Team Leader', // <-- Shows as the first item and has no value
+                'class' => 'form-control', 'label' => 'Team Leader'   
+                    ));?>
+               
+       </p>	
 
-		<li><?php echo $this->Form->postLink(__('Delete'), array('action' => 'delete', $this->Form->value('Project.project_id')), array('confirm' => __('Are you sure you want to delete # %s?', $this->Form->value('Project.project_id')))); ?></li>
-		<li><?php echo $this->Html->link(__('List Projects'), array('action' => 'index')); ?></li>
-	</ul>
+
+		
+	</fieldset>
+           <p>
+ <div class="form-group">
+   <label class="col-xs-0 control-label"></label>
+    <?php echo $this->Form->button('Edit', ['class' =>'btn btn-success']); ?>
+ <?php echo $this->Form->button('Cancel', array(
+   'type' => 'button',
+   'class' => 'btn btn-danger',
+   'onclick' => 'location.href=\'/Registro_Laboral/projects\'' 
+)); ?>
+    <?php $this->Form->end() ?>
+   
+   </p>
 </div>
+</div>
+        </div>
+    </div>

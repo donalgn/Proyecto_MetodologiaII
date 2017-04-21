@@ -83,6 +83,10 @@ class ProjectsController extends AppController {
 			$options = array('conditions' => array('Project.' . $this->Project->primaryKey => $id));
 			$this->request->data = $this->Project->find('first', $options);
 		}
+                
+                $users = $this->Project->User->find('list',array('fields' => array('username'),
+                     'conditions'=> array('User.enable_user LIKE'=>'%Y%','User.profile_id'=>'2')));
+                $this->set(compact('users'));
 	}
 
 /**
